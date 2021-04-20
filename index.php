@@ -38,8 +38,8 @@
 </body>
 </html>
 
-<!-- <?php
-include('./class/Student.php');
+<?php
+/* include('./class/Student.php');
     $body = file_get_contents("php://input");
 $js_decoded = json_decode($body, true);
 
@@ -52,7 +52,7 @@ $student->_taxCode = $js_decoded["_taxCode"];
 
 $js_encode = json_encode(array('state'=>TRUE, 'student'=>$student),true);
 header("Content-Type: application/json");
-echo($js_encode); 
+echo($js_encode);  */
 
 /* curl --header "Content-Type: application/json" --request POST --data '{"_name":"Ciccio", "_surname":"Benve"}' http://localhost:8080 */
-?> -->
+?> 

@@ -41,7 +41,7 @@ class Student
     return;
   }
   public function add($id, $name,$surname,$sidi_code,$tax_code){
-    $sql = "INSERT INTO student(id, name, surname, sidi_code, tax_code)VALUES(id=:id, name=:name, surname=:surname, sidi_code=:sidi_code, tax_code=:tax_code)";
+    $sql = "INSERT INTO student(id, name, surname, sidi_code, tax_code)VALUES(:id, :name, :surname, :sidi_code, :tax_code)";
     $stmt = $this->db->prepare($sql);
     $data=[
       'id'=>$id,
@@ -52,6 +52,19 @@ class Student
     ];
     $stmt->execute($data);
     return;
+  }
+  public function put($id, $name, $surname, $sidiCode, $taxCode){
+      $sql = "UPDATE student SET name=:name, surname=:surname, sidi_code=:sidi_code, tax_code=:tax_code WHERE id=:id;";
+      $stmt = $this->db->prepare($sql);
+      $data = [
+          'id'=>$id,
+          'name'=>$name,
+          'surname'=>$surname,
+          'sidi_code'=>$sidiCode,
+          'tax_code'=>$taxCode
+      ];
+      $stmt->execute($data);
+      return;
   }
 }
 ?>

@@ -20,7 +20,7 @@ switch($method) {
     $json = file_get_contents('php://input');
     if(isset($json)){
       $data = json_decode($json);
-      $student->add($data->id, $data->name, $data->surname, $data->sidi_code, $data->tax_code);
+      $student->add($data["id"], $data["name"], $data["surname"], $data["sidi_code"], $data["tax_code"]);
       break;
     }
     break;
@@ -34,7 +34,11 @@ switch($method) {
     break;
 
   case 'PUT':
-    // TODO
+    $json = file_get_contents("php://input");
+    if(isset($json)){
+      $data = json_decode($json, true);
+      $student->put($data["id"], $data["name"], $data["surname"], $data["sidi_code"], $data["tax_code"]);
+    }
     break;
 
   default:
