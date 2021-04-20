@@ -2,7 +2,6 @@
 $method = $_SERVER["REQUEST_METHOD"];
 include('./class/Student.php');
 $student = new Student();
-
 switch($method) {
   case 'GET':
     $id = $_GET['id'];
@@ -18,11 +17,20 @@ switch($method) {
     break;
 
   case 'POST':
-    // TODO
+    $json = file_get_contents('php://input');
+    if(isset($json)){
+      $data = json_decode($json);
+      $student->add($data->id, $data->name, $data->surname, $data->sidi_code, $data->tax_code);
+      break;
+    }
     break;
 
   case 'DELETE':
-    // TODO
+    $id = $_GET['id'];
+    if(isset($id)){
+      $student->delete($id);
+      break;
+    }
     break;
 
   case 'PUT':

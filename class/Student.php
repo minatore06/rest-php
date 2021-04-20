@@ -31,5 +31,27 @@ class Student
     $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
     return $result;
   }
+  public function delete($id){
+    $sql = "DELETE FROM student WHERE id=:id";
+    $stmt = $this->db->prepare($sql);
+    $data=[
+      'id' => $id
+    ];
+    $stmt->execute($data);
+    return;
+  }
+  public function add($id, $name,$surname,$sidi_code,$tax_code){
+    $sql = "INSERT INTO student(id, name, surname, sidi_code, tax_code)VALUES(id=:id, name=:name, surname=:surname, sidi_code=:sidi_code, tax_code=:tax_code)";
+    $stmt = $this->db->prepare($sql);
+    $data=[
+      'id'=>$id,
+      'name'=>$name,
+      'surname'=>$surname,
+      'sidi_code'=>$sidi_code,
+      'tax_code'=>$tax_code
+    ];
+    $stmt->execute($data);
+    return;
+  }
 }
 ?>
